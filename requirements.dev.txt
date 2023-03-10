@@ -1,0 +1,2 @@
+# this will be run only in dev environment
+flake8>=3.9.2,<3.10
