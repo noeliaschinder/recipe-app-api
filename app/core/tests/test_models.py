@@ -15,7 +15,7 @@ class ModelTests(TestCase):
         password = 'testpass123'
 
         user = get_user_model().objects.create_user(
-            email=self.normalize_email(email),
+            email=email,
             password=password,
         )
 
