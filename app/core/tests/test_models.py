@@ -51,7 +51,7 @@ class ModelTests(TestCase):
         """Test creating a superuser."""
         user = get_user_model().objects.create_superuser(
             'test@example.com',
-            'test123'
+            'test123',
         )
 
         self.assertTrue(user.is_superuser)
@@ -68,6 +68,7 @@ class ModelTests(TestCase):
             title='Sample recipe name',
             time_minutes=5,
             price=Decimal('5.50'),
+            description='Sample receipe description.',
         )
 
         self.assertEqual(str(recipe), recipe.title)
@@ -78,3 +79,13 @@ class ModelTests(TestCase):
         tag = models.Tag.objects.create(user=user, name='Tag1')
 
         self.assertEqual(str(tag), tag.name)
+
+    def test_create_ingredient(self):
+        """Test creating an ingredient is successful."""
+        user = create_user()
+        ingredient = models.Ingredient.objects.create(
+            user=user,
+            name='Ingredient1'
+        )
+
+        self.assertEqual(str(ingredient), ingredient.name)
